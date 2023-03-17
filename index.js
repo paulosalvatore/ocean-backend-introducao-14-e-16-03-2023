@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+// Sinalizamos para o express que
+// estamos usando JSON
+app.use(express.json());
+
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
@@ -33,6 +37,15 @@ app.get("/itens/:id", function (req, res) {
 
   // Enviamos a resposta com o item obtido
   res.send(item);
+});
+
+// Create [POST] /itens
+app.post("/itens", function (req, res) {
+  const item = req.body.nome;
+
+  itens.push(item);
+
+  res.send("Item criado com sucesso!");
 });
 
 app.listen(3000);
