@@ -48,4 +48,23 @@ app.post("/itens", function (req, res) {
   res.send("Item criado com sucesso!");
 });
 
+// Update [PUT] /itens/:id
+app.put("/itens/:id", function (req, res) {
+  const id = req.params.id;
+  const item = req.body.nome;
+
+  itens[id - 1] = item;
+
+  res.send("Item atualizado com sucesso!");
+});
+
+// Delete [DELETE] /itens/:id
+app.delete("/itens/:id", function (req, res) {
+  const id = req.params.id;
+
+  delete itens[id - 1];
+
+  res.send("Item removido com sucesso!");
+});
+
 app.listen(3000);
